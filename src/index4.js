@@ -36,12 +36,12 @@ autoUpdater.on('error', (error) => {
 });
 
 // working in cmd console
-autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = `Download speed: ${progressObj.bytesPerSecond}`;
-  log_message += ` - Downloaded ${progressObj.percent}%`;
-  log_message += ` (${progressObj.transferred}/${progressObj.total})`;
-  console.log(log_message);
-});
+// autoUpdater.on('download-progress', (progressObj) => {
+//   let log_message = `Download speed: ${progressObj.bytesPerSecond}`;
+//   log_message += ` - Downloaded ${progressObj.percent}%`;
+//   log_message += ` (${progressObj.transferred}/${progressObj.total})`;
+//   console.log(log_message);
+// });
 
 autoUpdater.on('download-progress', (progressObj) => {
   let log_message = `Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}% (${progressObj.transferred}/${progressObj.total})`;

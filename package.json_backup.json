@@ -7,7 +7,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder",
+    "build": "electron-forge make",
     "dev2": "nodemon --exec electron .",
     "dev": "set UPDATE_FORCE=true && nodemon --exec electron ."
   },
@@ -15,7 +15,8 @@
     "electron-updater": "^6.1.8"
   },
   "devDependencies": {
-    "electron-builder": "^23.0.3",
+    "@electron-forge/cli": "^6.0.0",
+    "@electron-forge/maker-squirrel": "^6.0.0",
     "electron": "^22.3.25",
     "nodemon": "^3.1.1"
   },
@@ -26,22 +27,26 @@
       "output": "dist"
     },
     "win": {
-      "target": [
-        "nsis",
-        "portable"
-      ],
-      "artifactName": "${productName}_Setup_${version}.${ext}"
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
-    },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "mandeepsng",
-        "repo": "test-app-electron"
-      }
-    ]
+    }
+  },
+  "config": {
+    "forge": {
+      "electronPackagerConfig": {
+        "appBundleId": "com.electron.demoapp"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "iconUrl": "http://example.com"
+          }
+        }
+      ]
+    }
   }
 }

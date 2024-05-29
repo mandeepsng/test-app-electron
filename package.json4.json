@@ -15,8 +15,8 @@
     "electron-updater": "^6.1.8"
   },
   "devDependencies": {
-    "electron-builder": "^23.0.3",
     "electron": "^22.3.25",
+    "electron-builder": "^22.11.7",
     "nodemon": "^3.1.1"
   },
   "build": {
@@ -27,21 +27,22 @@
     },
     "win": {
       "target": [
-        "nsis",
-        "portable"
-      ],
-      "artifactName": "${productName}_Setup_${version}.${ext}"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "mandeepsng",
-        "repo": "test-app-electron"
-      }
-    ]
+    "publish": {
+      "provider": "github",
+      "owner": "mandeepsng",
+      "repo": "test-app-electron"
+    }
   }
 }
