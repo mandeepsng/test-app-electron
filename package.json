@@ -1,0 +1,51 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "description": "description",
+  "author": "author",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-forge make",
+    "dev": "nodemon --exec electron ."
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.8"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0",
+    "@electron-forge/maker-squirrel": "^6.0.0",
+    "electron": "^22.3.25",
+    "nodemon": "^3.1.1"
+  },
+  "build": {
+    "appId": "com.yourapp.id",
+    "productName": "YourAppName",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "config": {
+    "forge": {
+      "electronPackagerConfig": {
+        "appBundleId": "com.electron.demoapp"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "iconUrl": "http://example.com"
+          }
+        }
+      ]
+    }
+  }
+}
